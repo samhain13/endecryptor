@@ -13,21 +13,21 @@ CHARS.extend(['.', ',', '!', '?', ' ', '-', '$', '%'])
 
 
 class EnDecryptor:
-    author = "arielle.cruz@gmail.com"
-    version = "0.8"
+    author = 'arielle.cruz@gmail.com'
+    version = '0.8'
     # A list of alphanumeric characters and some punctuation marks:
     mychars = CHARS
     # Encrypt or decrypt mode? We default to encrypt.
     is_encrypt = True
     # The two strings needed for either encryption or decryption.
-    string_one = ""
-    string_two = ""
+    string_one = ''
+    string_two = ''
 
     def get_result(self):
         """Returns the result of our application process."""
         return self._do_job()
 
-    def set_strings(self, string_one: str = "", string_two: str = ""):
+    def set_strings(self, string_one: str = '', string_two: str = ''):
         """Sets the application target string and salt."""
         # We only accept strings.
         if type(string_one) is str and type(string_two) is str:
@@ -60,15 +60,15 @@ class EnDecryptor:
                 if index < 0:
                     index += len(self.mychars)
             result.append(self.mychars[index])
-        return "".join(result)
+        return ''.join(result)
 
-    def _find_ids(self, string: str) -> list[int]:
+    def _find_ids(self, string_part: str) -> list[int]:
         """Gets the index of each character in string from the mychars list."""
         # We want a non-empty string.
-        if not string:
+        if not string_part:
             return []
         chars = []  # Dump for indexes of supported characters.
-        for i in string:
+        for i in string_part:
             for j in self.mychars:
                 if i == j:
                     chars.append(self.mychars.index(j))
@@ -76,7 +76,7 @@ class EnDecryptor:
 
 
 # Test and sample commandline usage.
-if __name__ == "__main__":
+if __name__ == '__main__':
     # Instantiate.
     e = EnDecryptor()
     # Print a greeter.
@@ -92,34 +92,34 @@ if __name__ == "__main__":
     # So we can start over, we'll put everything in a loop.
     running = True
     while running:
-        while m := str(input("Decrypt (D) or Encrypt (E) text? ")).lower() \
-                not in "dDeE":
+        while m := str(input('Decrypt (D) or Encrypt (E) text? ')).lower() \
+                not in 'dDeE':
             # Keep asking the user what mode to use; we only want D or E.
             pass
-        if m == "d":
-            verb = "decrypt"
+        if m == 'd':
+            verb = 'decrypt'
             e.set_to_encrypt(False)
         else:
-            verb = "encrypt"
+            verb = 'encrypt'
         print(f'The application has been set to {verb} mode.\n')
         # Ask the user for the text that she wants to encrypt or decrypt
         # as well as the passphrase. Then set both strings.
-        string_one = input(f'Please enter the text to {verb}: ')
-        string_two = input('Please enter a passphrase: ')
-        e.set_strings(string_one, string_two)
+        str_one = input(f'Please enter the text to {verb}: ')
+        str_two = input('Please enter a passphrase: ')
+        e.set_strings(str_one, str_two)
         # Tell the EnDecryptor to do its job and show the result to the user.
-        result = e.get_result()
+        output = e.get_result()
         print(
             f'Below is the {verb}ed result:\n'
-            f'{result}\n'
+            f'{output}\n'
             f'Please keep it in a safe place.'
         )
         # Ask the user if she wants to start over.
-        while r := str(input("Would you like to start over (Y|N)? ")).lower() \
-                not in "yYnN":
-            if r != "y":
+        while r := str(input('Would you like to start over (Y|N)? ')).lower() \
+                not in 'yYnN':
+            if r != 'y':
                 running = False  # Kill the app.
-                print("  ** Goodbye. **\n")
+                print('  ** Goodbye. **\n')
                 quit()
             else:
-                print("\n  ** Starting new session. **\n")
+                print('\n  ** Starting new session. **\n')
