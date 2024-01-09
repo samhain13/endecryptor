@@ -1,25 +1,22 @@
-#! /usr/bin/python
 """
     EnDecryptor
     A simple, salty slide rule encryption and decryption application.
     By Arielle B Cruz <http://www.abcruz.com>
     Dedicated to the public domain on January 2013.
 """
+import string
+
+
+CHARS = [x for x in string.digits]
+CHARS.extend([x for x in string.ascii_letters])
+CHARS.extend(['.', ',', '!', '?', ' ', '-', '$', '%'])
 
 
 class EnDecryptor:
     author = "arielle.cruz@gmail.com"
     version = "0.8"
     # A list of alphanumeric characters and some punctuation marks:
-    mychars = [
-        '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-        'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
-        'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D',
-        'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N',
-        'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-        'Y', 'Z', '.', ',', '!', '?', ' ', '-', '$', '%'
-    ]
+    mychars = CHARS
     # Encrypt or decrypt mode? We default to encrypt.
     is_encrypt = True
     # The two strings needed for either encryption or decryption.
