@@ -1,8 +1,8 @@
 """
-    EnDecryptor
-    A simple, salty slide rule encryption and decryption application.
-    By Arielle B Cruz <http://www.abcruz.com>
-    Dedicated to the public domain on January 2013.
+EnDecryptor
+A simple, salty slide rule encryption and decryption application.
+By Arielle B Cruz <http://www.abcruz.com>
+Dedicated to the public domain on January 2013.
 """
 import string
 
@@ -23,7 +23,8 @@ class EnDecryptor:
     string_one = ''
     string_two = ''
 
-    def get_result(self):
+    @property
+    def result(self) -> str:
         """Returns the result of our application process."""
         return self._do_job()
 
@@ -108,10 +109,9 @@ if __name__ == '__main__':
         str_two = input('Please enter a passphrase: ')
         e.set_strings(str_one, str_two)
         # Tell the EnDecryptor to do its job and show the result to the user.
-        output = e.get_result()
         print(
             f'Below is the {verb}ed result:\n'
-            f'{output}\n'
+            f'{e.result}\n'
             f'Please keep it in a safe place.'
         )
         # Ask the user if she wants to start over.
