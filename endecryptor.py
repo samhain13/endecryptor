@@ -26,7 +26,7 @@ class EnDecryptor:
     def get_result(self):
         """Returns the result of our application process."""
         return self._do_job()
-    
+
     def set_strings(self, string_one: str = "", string_two: str = ""):
         """Sets the application target string and salt."""
         # We only accept strings.
@@ -36,7 +36,7 @@ class EnDecryptor:
             if len(string_one) > len(string_two):
                 string_two *= int(len(string_one)/len(string_two)) + 1
             self.string_two = string_two
-    
+
     def set_to_encrypt(self, is_encrypt: bool = True):
         """Sets the application mode to either encrypt or decrypt."""
         self.is_encrypt = is_encrypt
@@ -61,7 +61,7 @@ class EnDecryptor:
                     index += len(self.mychars)
             result.append(self.mychars[index])
         return "".join(result)
-    
+
     def _find_ids(self, string: str) -> list[int]:
         """Gets the index of each character in string from the mychars list."""
         # We want a non-empty string.
@@ -73,7 +73,7 @@ class EnDecryptor:
                 if i == j:
                     chars.append(self.mychars.index(j))
         return chars
-        
+
 
 # Test and sample commandline usage.
 if __name__ == "__main__":
@@ -92,10 +92,10 @@ if __name__ == "__main__":
     # So we can start over, we'll put everything in a loop.
     running = True
     while running:
-        # Ask the user whether she wants to encrypt or decrypt text.
-        m = "x"
-        while m not in "dDeE":
-            m = str(input("Decrypt (D) or Encrypt (E) text? ")).lower()
+        while m := str(input("Decrypt (D) or Encrypt (E) text? ")).lower() \
+                not in "dDeE":
+            # Keep asking the user what mode to use; we only want D or E.
+            pass
         if m == "d":
             verb = "decrypt"
             e.set_to_encrypt(False)
@@ -115,9 +115,8 @@ if __name__ == "__main__":
             f'Please keep it in a safe place.'
         )
         # Ask the user if she wants to start over.
-        r = "x"
-        while r not in "yYnN":
-            r = str(input("Would you like to start over (Y|N)? ")).lower()
+        while r := str(input("Would you like to start over (Y|N)? ")).lower() \
+                not in "yYnN":
             if r != "y":
                 running = False  # Kill the app.
                 print("  ** Goodbye. **\n")
