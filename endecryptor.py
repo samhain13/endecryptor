@@ -60,8 +60,9 @@ class EnDecryptor:
     def _create_results_filename(self, source_path: Path) -> Path:
         verb = 'encrypted' if self.is_encrypt else 'decrypted'
         filename = source_path.stem
+        resultfilename = f'{filename}_{verb}{source_path.suffix}'
         parts = list(source_path.parts[:-1])
-        parts.append(filename.replace(filename, f'{filename}_{verb}{source_path.suffix}'))
+        parts.append(filename.replace(filename, resultfilename))
         return Path(*parts)
 
     def _do_job(self) -> str:
