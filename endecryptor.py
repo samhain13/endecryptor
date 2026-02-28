@@ -9,9 +9,12 @@ import string
 from pathlib import Path
 
 
-CHARS = [x for x in string.digits]
-CHARS.extend([x for x in string.ascii_letters])
-CHARS.extend(['.', ',', '!', '?', ' ', '-', '$', '%'])
+CHARS = (
+    [x for x in string.digits] +
+    [x for x in string.ascii_letters] +
+    [' '] +
+    [x for x in string.punctuation]
+)
 
 
 class EnDecryptor:

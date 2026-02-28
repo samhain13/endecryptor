@@ -5,8 +5,8 @@ from endecryptor import EnDecryptor
 
 PASSPHRASE = 'this is a passphrase that is longer than the plain text'
 PASSPHRASE_SHORT = 'short'
-ENCRYPTED_TEXT = '2vDNkbopotS6VQlvOmTMlW'
-ENCRYPTED_TEXT_SHORT = '1vJMRldRF.VdRPpGEAS,RK'
+ENCRYPTED_TEXT = '*vDN\|`{o0S*VQ]vOmTM]W'
+ENCRYPTED_TEXT_SHORT = ')vJMR7;RF V;RP{GEAS!RK'
 PLAIN_TEXT = 'Hello, text to encrypt'
 
 
